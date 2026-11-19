@@ -1,0 +1,47 @@
+{
+  "referenceSha256": "3D297F42D250CC32CA4A58E2947AF6223DD72596A5182FCB5E31ECCE5324FD48",
+  "decodedFloatSha256": "37CB2B3C56DBD9C2D8E12625A309F4FFF7420F47E8E403E839B274A5F82F6DFD",
+  "referenceDurationSeconds": 63.762,
+  "gr86Used": false,
+  "method": "Hann-weighted cycle Fourier projection; 128 orders tapered after 96; phase alignment; per-cycle RMS normalization",
+  "rpmMapping": "Model assumption: extracted periodicity Hz multiplied by 60; no recorded ECU RPM is available.",
+  "anchors": [
+    {
+      "source": "WRX only",
+      "centerSeconds": 11.65,
+      "windowSeconds": 0.34,
+      "periodHz": 12.27765,
+      "periodCorrelation": 0.94763,
+      "modelRpm": 736.66,
+      "rawCycleRms": 0.37032
+    },
+    {
+      "source": "WRX only",
+      "centerSeconds": 15.35,
+      "windowSeconds": 0.34,
+      "periodHz": 14.58741,
+      "periodCorrelation": 0.98087,
+      "modelRpm": 875.24,
+      "rawCycleRms": 0.305976
+    },
+    {
+      "source": "WRX only",
+      "centerSeconds": 44.5,
+      "windowSeconds": 0.34,
+      "periodHz": 21.39352,
+      "periodCorrelation": 0.94343,
+      "modelRpm": 1283.61,
+      "rawCycleRms": 0.372873
+    },
+    {
+      "source": "WRX only",
+      "centerSeconds": 32,
+      "windowSeconds": 0.1,
+      "periodHz": 50.86094,
+      "periodCorrelation": 0.93919,
+      "modelRpm": 3051.66,
+      "rawCycleRms": 0.224424
+    }
+  ],
+  "javaSha256": "92A2F53CEB6070A9478FBA0B9305A7EA29CDFF836D6F6FE7B7C92F6302D26A42"
+}

@@ -1,0 +1,1 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="hk.local.enginex7.tests"><uses-sdk android:minSdkVersion="28" android:targetSdkVersion="28"/><application android:label="7X Engine QA"/><instrumentation android:name="hk.local.enginex7.DeviceTests" android:targetPackage="hk.local.enginex7" android:functionalTest="true"/></manifest>

@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "coreAssertions": 33,
+  "deviceAssertions": 28,
+  "environment": "Android 9 API28 x86 emulator",
+  "physicalCarVerified": false,
+  "mode": "vehicle"
+}

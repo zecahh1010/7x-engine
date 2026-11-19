@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T07:15:38.579Z",
+  "title": "Design System: 7X Engine",
+  "extensions": {
+    "platform": {
+      "target": "native Android",
+      "implementation": "Java Views and Canvas",
+      "theme": "android:style/Theme.Material.NoActionBar",
+      "tokenSource": "../DESIGN.md YAML frontmatter",
+      "previewPolicy": "Native components are documented by source references. HTML/CSS detector previews are omitted; no generated or shipping raster is used.",
+      "physicalCarVerified": false,
+      "reference": "User-pinned local Outer Voice native UI; supersedes rejected fixed-layout direction.",
+      "selector111": "Explicit native TextView rows: Frost Text on Raised Charcoal, MODE_DROPDOWN popup, drawn chevron; Previous/Next access all seven preserved presets."
+    },
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Charcoal Field"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Raised Charcoal"
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Frost Text"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Blue Grey"
+      },
+      "track": {
+        "role": "neutral",
+        "displayName": "Instrument Track"
+      },
+      "redline-error": {
+        "role": "error",
+        "displayName": "Soft Red"
+      },
+      "warning-amber": {
+        "role": "warning",
+        "displayName": "Warning Amber"
+      },
+      "accent-cyan": {
+        "role": "primary",
+        "displayName": "Operational Cyan"
+      },
+      "accent-magenta": {
+        "role": "primary-alternative",
+        "displayName": "Magenta"
+      },
+      "accent-lime": {
+        "role": "primary-alternative",
+        "displayName": "Lime"
+      },
+      "accent-violet": {
+        "role": "primary-alternative",
+        "displayName": "Violet"
+      },
+      "accent-ice": {
+        "role": "primary-alternative",
+        "displayName": "Ice"
+      },
+      "native-theme-accent": {
+        "role": "platform",
+        "displayName": "Native Theme Teal"
+      },
+      "native-window-background": {
+        "role": "platform",
+        "displayName": "Native Window Background"
+      },
+      "native-secondary-text": {
+        "role": "platform",
+        "displayName": "Native Secondary Text"
+      },
+      "ripple": {
+        "role": "interaction",
+        "displayName": "Native Touch Ripple"
+      }
+    },
+    "typographyMeta": {
+      "display-gear": {
+        "purpose": "Canvas gear or stopped dash; gu scaling."
+      },
+      "display-rpm": {
+        "purpose": "Virtual engine RPM; gu scaling."
+      },
+      "display-speed": {
+        "purpose": "Labelled speed, em dash when stale; gu scaling."
+      },
+      "title": {
+        "purpose": "Panel title."
+      },
+      "heading": {
+        "purpose": "Settings section headings."
+      },
+      "ignition": {
+        "purpose": "Primary start/preparing/igniting/stop/testing action."
+      },
+      "gain": {
+        "purpose": "Signed independent channel dB readouts."
+      },
+      "throttle": {
+        "purpose": "Throttle percentage or GPS estimated load."
+      },
+      "spinner": {
+        "purpose": "Multiline sound, output, device and appearance choices."
+      },
+      "control": {
+        "purpose": "Ordinary buttons and raw-brake value."
+      },
+      "slider-label": {
+        "purpose": "Settings slider name and value."
+      },
+      "status": {
+        "purpose": "Navigation/mode buttons, input and speaker-test state."
+      },
+      "body": {
+        "purpose": "Supporting copy and home route summary."
+      },
+      "detail": {
+        "purpose": "Virtual-engine caption, settings route and measured-window diagnostics."
+      },
+      "gauge-tick": {
+        "purpose": "Canvas 1,000 RPM tick numerals."
+      },
+      "gauge-detail": {
+        "purpose": "Canvas vehicle/GPS/simulation speed-source label."
+      },
+      "gauge-unit": {
+        "purpose": "Canvas RPM unit."
+      }
+    },
+    "shadows": [],
+    "elevationPolicy": "Authored PanelView buttons have zero elevation and native ripple. Platform widgets and minimized buttons retain native theme behavior; no project shadow scale.",
+    "motion": [
+      {
+        "name": "gauge-redraw-request",
+        "value": "33ms",
+        "purpose": "Visible redraw request; not measured performance."
+      },
+      {
+        "name": "rpm-display-blend",
+        "value": "shown += (rpm - shown) * 0.28 per draw",
+        "purpose": "Smooth displayed RPM."
+      },
+      {
+        "name": "panel-refresh",
+        "value": "100ms",
+        "purpose": "Refresh live input, tests, route status and control availability."
+      },
+      {
+        "name": "gauge-accessibility-description",
+        "value": "about 1000ms",
+        "purpose": "Avoid changing descriptive text every draw."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "measuredWidthPx / uiScale >= 800",
+        "purpose": "Full-height 0.46/0.54 instrument/control panes; otherwise stacked scrolling."
+      }
+    ],
+    "nativeGeometry": {
+      "panelUnit": "round(referenceUnits * max(density, min(measuredWidthPx/1024, measuredHeightPx/600)))",
+      "textPixels": "referenceSize * uiScale * (scaledDensity/density)",
+      "gaugeUnit": "max(density, min(gaugeWidthPx/430, gaugeHeightPx/445))",
+      "gaugeTextPixels": "referenceSize * gaugeUnit * (scaledDensity/density)",
+      "wideHome": "Toolbar plus remaining-height panes; gauge fills left, controls independently scroll on right.",
+      "compactHome": "Stacked scroll; gauge 310 reference units.",
+      "settings": "Always scroll; wide equal columns, compact stack.",
+      "buttonMinimumHeightUnits": 52,
+      "ignitionMinimumHeightUnits": 80,
+      "spinnerMinimumHeightUnits": 56,
+      "sliderHeightUnits": 48,
+      "wideNavigationWidthUnits": 90,
+      "rowGapUnits": 8,
+      "controlStroke": "max(1px, 1u)",
+      "fullOverlay": {
+        "width": "MATCH_PARENT",
+        "height": "MATCH_PARENT",
+        "x": 0,
+        "y": 0,
+        "flags": [
+          "FLAG_NOT_FOCUSABLE",
+          "FLAG_NOT_TOUCH_MODAL"
+        ]
+      },
+      "minimized": {
+        "unit": "Display-based version of proportional panel scale.",
+        "anchor": "TOP|RIGHT",
+        "xUnits": 12,
+        "yUnits": 28,
+        "widthUnits": 272,
+        "heightUnits": 68,
+        "actionHeightUnits": 56,
+        "exitWidthUnits": 72,
+        "exitLeadingGapUnits": 8,
+        "minimumGapDp": 8
+      },
+      "gauge": {
+        "arcStartDegrees": 135,
+        "arcSweepDegrees": 270,
+        "center": "width * 0.5, height * 0.44",
+        "radius": "min(width * 0.41, height * 0.35)",
+        "trackStroke": "radius * 0.065",
+        "ticksRpm": 500,
+        "labelsRpm": 1000,
+        "strokeCaveat": "Needle 3px, major ticks 2px and minor ticks 1px remain raw Canvas pixels."
+      }
+    },
+    "stateRules": {
+      "ignition": [
+        "Start engine",
+        "Preparing audio",
+        "Igniting",
+        "Stop engine",
+        "Testing"
+      ],
+      "ignitionDisabled": "During preparation and ignition.",
+      "lockedWhileActive": [
+        "mode",
+        "output",
+        "sample rate",
+        "internal device",
+        "external device"
+      ],
+      "soundSelection": "Available while active; persists profile.",
+      "vehicleInput": "Freshness tracked independently per signal; 1500ms. Missing/stale throttle and speed display em dash; never describe missing data as measured zero.",
+      "brake": "Raw depth, no percent claim. Fresh valid 0/1 switch takes priority; otherwise fresh depth > 0.2 is implemented fallback.",
+      "sourceLabels": "ECARX actual input, GPS estimated load and synthetic simulation remain distinct.",
+      "speakerTest": {
+        "states": [
+          "choose",
+          "engine must stop",
+          "preparing",
+          "playing with elapsed / 2.2s",
+          "finished, ask if both tones heard",
+          "stopped",
+          "error"
+        ],
+        "feedback": "Nearby polite live region; busy test buttons disabled/dimmed; Stop test visible while busy.",
+        "target": "AudioOutput.activeOutput, not saved engine output.",
+        "completionBoundary": "PCM/route/test completion does not establish physical audibility."
+      },
+      "gain": "Independent +/-1 dB and reset; signed values clamp -36 to +18 dB.",
+      "independentSettings": [
+        "internal gain",
+        "external gain",
+        "app volume",
+        "system media volume",
+        "sample rate",
+        "internal device mapping",
+        "external device mapping"
+      ],
+      "minimize": "Keep service/audio alive; Restore plus explicit Exit.",
+      "exit": "Stop model/audio/location/vehicle reader; remove overlay and Activity task; release focus/wake lock; stop service.",
+      "defaults": {
+        "profile": "subaru",
+        "mode": "vehicle",
+        "output": "internal",
+        "mapping": "automatic",
+        "internalDb": 0,
+        "externalDb": 0,
+        "volumePercent": 60,
+        "sampleRateHz": 44100,
+        "intensityPercent": 50,
+        "latencyMs": 120,
+        "language": "Traditional Chinese",
+        "accent": "cyan"
+      },
+      "notPersisted": [
+        "engine-running state"
+      ]
+    },
+    "evidence": {
+      "kind": "Native emulator fixtures and source extraction; no shipping raster.",
+      "directories": [
+        "review/v1.1.3-credits"
+      ],
+      "directoryNameCaveat": "physical-* names describe fixtures and do not mean physical-car capture.",
+      "reviewStatus": "1.1.3 narrow Credits page native visual check passed at wide and compact/font130 sizes. See review/CREDITS-1.1.3.md. Older independent/full UI reviews remain historical.",
+      "firstReview": "Initial full native review accepted composition/readability and requested four fixes. Final verdict pass resolved nearby test feedback, actual target, minimized gap and current design documentation.",
+      "boundary": "Real head-unit SDK access, cabin/exterior audibility/routing, OEM overlay behavior and system insets remain unverified."
+    }
+  },
+  "components": [
+    {
+      "name": "Native ordinary button",
+      "kind": "button",
+      "refersTo": "button-default",
+      "description": "Rounded outlined control, minimum 52u, zero elevation and native ripple.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#button"
+    },
+    {
+      "name": "Selected operating button",
+      "kind": "button",
+      "refersTo": "button-selected",
+      "description": "Saved accent fill with background-colored text; default cyan.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#choice"
+    },
+    {
+      "name": "Ignition",
+      "kind": "button",
+      "refersTo": "ignition",
+      "description": "Minimum 80u primary action with preparing, igniting, running and testing states.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#update"
+    },
+    {
+      "name": "Top navigation",
+      "kind": "nav",
+      "description": "Wide title-row controls; compact second row with equal weights.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#show"
+    },
+    {
+      "name": "Native spinner",
+      "kind": "input",
+      "description": "Multiline proportional native selection; 56u minimum height.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#spinner"
+    },
+    {
+      "name": "Gain controls",
+      "kind": "custom",
+      "description": "Independent signed internal/external dB, minus, plus and reset.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#gain"
+    },
+    {
+      "name": "Speaker-test feedback",
+      "kind": "custom",
+      "description": "Nearby polite status, target-specific state, disabled busy actions and Stop test.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#update"
+    },
+    {
+      "name": "ECARX pedal readouts",
+      "kind": "custom",
+      "description": "Fresh throttle percentage, explicit unavailable/stale text, raw brake depth and pressed state.",
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#update"
+    },
+    {
+      "name": "Canvas tachometer",
+      "kind": "custom",
+      "description": "270-degree arc with proportional text, virtual RPM/gear and source-labelled speed.",
+      "source": "app/src/main/java/hk/local/enginex7/GaugeView.java#onDraw"
+    },
+    {
+      "name": "Minimized overlay",
+      "kind": "custom",
+      "refersTo": "minimized-panel",
+      "description": "Top-right Restore and explicit Exit with at least 8dp gap; playback continues.",
+      "source": "app/src/main/java/hk/local/enginex7/EngineService.java#showOverlay"
+    },
+    {
+      "source": "app/src/main/java/hk/local/enginex7/PanelView.java#creditsPage",
+      "description": "Settings entry; centered Developer/開發者, bold 48u Zeca in saved accent, 20u app name; shared Back returns to Settings.",
+      "name": "Native credits page",
+      "kind": "screen"
+    }
+  ],
+  "narrative": {
+    "northStar": "One working instrument",
+    "overview": "The user-pinned Outer Voice reference governs this dark native instrument: a charcoal field, cyan operational accent, white system sans and generous direct controls. One large tachometer and one obvious ignition action share the usable car window with immediate pedal feedback. Traditional Chinese is the default; English is a persistent option.\n\nJava Android Views and authored Canvas drawing provide the interface under `android:style/Theme.Material.NoActionBar`. Measured-window proportions replace the rejected fixed-height composition. Native screenshot fixtures provide review evidence; there is no HTML detector, generated image or shipping raster.",
+    "keyCharacteristics": [
+      "Full-height two-pane operation on wide windows, stacked scrolling on compact windows.",
+      "Proportional controls and separate system font-scale support.",
+      "Explicit actual, estimated, simulated, stale and unavailable input states.",
+      "Independent cabin/exterior gain and nearby speaker-test feedback.",
+      "Shared Activity and overlay panel with distinct Minimize and Exit behavior."
+    ],
+    "rules": [
+      {
+        "name": "The State Color Rule",
+        "body": "Preserve written warning and error states independently of the chosen operational accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Scaling Rule",
+        "body": "Preserve both measured-window scaling and the independent font-scale multiplier. Review compact scrolling and large text in native captures; proportional Canvas coordinates do not guarantee text reflow.",
+        "section": "typography"
+      },
+      {
+        "name": "The Window Rule",
+        "body": "Use measured panel bounds for wide/compact composition; do not restore the rejected configuration-width breakpoint or fixed wide gauge height.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "**Do** follow Outer Voice's native proportional control language and measured-window scaling.",
+      "**Do** keep stale/unavailable ECARX values, raw brake depth and simulated/estimated input explicitly labelled.",
+      "**Do** preserve nearby test feedback, Stop test and the actual attempted speaker target.",
+      "**Do** keep independent dB, app/system volume, sample rate and device mappings.",
+      "**Do** review native wide, compact, large-text and minimized captures with 48dp targets and at least 8dp gaps."
+    ],
+    "donts": [
+      "**Don't** restore the rejected fixed-height wide layout or configuration-width breakpoint.",
+      "**Don't** claim real-car SDK access, calibrated brake depth, audible output or OEM overlay/insets from emulator fixtures, or a final ship verdict before finish review.",
+      "**Don't** substitute HTML previews, generated screenshots or shipping raster artwork for native evidence.",
+      "**Don't** conceal routing errors, equate completed test tones with heard sound, or make Exit leave playback alive.",
+      "**Don't** imply saved accent selection rethemes every platform widget or claim Compose/Material 3 conformance."
+    ]
+  }
+}
